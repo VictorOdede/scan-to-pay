@@ -78,7 +78,7 @@ export default function Amount ({ navigation }) {
 
     
 
-    const url = "https://2eea-41-80-98-114.ngrok.io/api/transaction"
+    const url = "https://lipa-api-ro6xg.ondigitalocean.app/api/transaction"
 
     
 
