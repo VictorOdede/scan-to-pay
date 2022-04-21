@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "lipa",
-    "slug": "lipa",
-    "version": "1.0.1",
+    "name": "Lipa",
+    "slug": "Lipa",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -21,7 +21,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.yourappname",
+      "bundleIdentifier": "com.easylipa.lipa",
       "buildNumber": "1.0.0"
     },
     "web": {
