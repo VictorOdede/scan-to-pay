@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Image, Text, Button} from 'react-native';
-import checkmark from '../assets/checkmark.png';
+import checkmark from '../assets/check-mark.png';
 
 export default function Success({navigation}) {
     const goHome = () => {
@@ -40,6 +40,8 @@ const styles = StyleSheet.create({
     text: {
         fontWeight: 'bold',
         textAlign: 'center',
-        padding: 10
+        padding: 10,
+        fontSize: 18
+        
     }
 });

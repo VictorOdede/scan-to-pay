@@ -83,8 +83,8 @@ export default function Amount ({ navigation }) {
     
 
     //send payment request to REST API 
-    const startPay = async(amt) =>{
-        const validPhone = "254" + phone.slice(1);
+    const startPay = async(amt, myPhone) =>{
+        const validPhone = "254" + myPhone.slice(1);
 
         const paymentData = {
             amountSent: amt,
@@ -94,7 +94,6 @@ export default function Amount ({ navigation }) {
         }
 
         try{
-            console.log(paymentData)
             const response = await axios.post(url, paymentData ); 
             console.log(response.data);
 
@@ -113,7 +112,7 @@ export default function Amount ({ navigation }) {
             setPhone(values.phoneNumber)
             navigation.navigate('Success');
             await storeNumber(values.phoneNumber);
-            await startPay(values.sentAmount);
+            await startPay(values.sentAmount, values.phoneNumber);
         }}
         >
             {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (

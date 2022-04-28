@@ -1,11 +1,12 @@
 {
   "cli": {
-    "version": ">= 0.51.0"
+    "version": ">= 0.52.0"
   },
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "node": "16.14.2"
     },
     "preview": {
       "distribution": "internal"
