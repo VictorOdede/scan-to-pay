@@ -25,7 +25,11 @@
     "react-native-gesture-handler": "~1.10.2",
     "react-native-svg-transformer": "^1.0.0",
     "react-navigation": "^4.4.4",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "expo-updates": "~0.10.15",
+    "react-native-reanimated": "~2.2.0",
+    "react-native-screens": "~3.8.0",
+    "react-native-safe-area-context": "3.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
