@@ -5,9 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import ScanQR from './components/ScanQR'
 import Amount from './components/Amount';
-
+import NoInternet from './components/NoInternet';
+import FailedScan from './components/FailedScan';
 import Success from './components/Success';
-
 
 import {registerRootComponent} from 'expo';
 import {DataProvider} from './components/DataContext';
@@ -76,7 +76,17 @@ export default function App() {
                 options={{ title: 'Enter PIN' }}
                 />
 
+              <Stack.Screen
+                name="FailedScan"
+                component={FailedScan}
+                options={{ title: 'Failed Scan' }}
+                />
 
+              <Stack.Screen
+                name="NoInternet"
+                component={NoInternet}
+                options={{ title: 'No Internet' }}
+                />
 
             </Stack.Navigator>
           </NavigationContainer>

@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useState, useContext, useCallback } from 'react';
-import { StyleSheet, View, Alert, Vibration } from 'react-native';
+import { StyleSheet, View, Vibration } from 'react-native';
 import BarcodeMask from 'react-native-barcode-mask';
 import {useNetInfo} from "@react-native-community/netinfo";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -43,7 +43,7 @@ const isFocused = useIsFocused();
 
 // Do something after QR is scanned
 const handleBarCodeScanned = async ({ data }) => {
-  setScanned(true);
+
   const myData = data.toString();
   const business_name = myData.slice(40);
   const business_id = myData.slice(3,39);
@@ -52,24 +52,14 @@ const handleBarCodeScanned = async ({ data }) => {
 
 
   if(validation_str !== "LP"){
-    Alert.alert(
-      "Failed Scan",
-      "Please scan a Lipa QR code.",
-      [{text: "OK", onPress: ()=>{ 
-        setScanned(false)}}],
-      {cancelable: true, onDismiss: () => {setScanned(false)}}
-    )
-  } else if(!netInfo.isConnected){
-    Alert.alert(
-      "No internet connection",
-      "Please connect to the internet and retry.",
-      [{text: "OK", onPress: ()=>{setScanned(false)}}],
-      {cancelable: true, onDismiss: () => {setScanned(false)}}
-    )
-  } else{
+    navigation.navigate("FailedScan")
+  } 
+  else if(!netInfo.isConnected){
+    navigation.navigate("NoInternet")
+  } 
+  else{
   setID(business_id);
   setBusiness(business_name);
-
 
   const p = await readNumber(myKey);
   setPhone(p);

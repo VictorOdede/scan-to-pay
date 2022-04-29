@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'flex-start',
         padding: 10,
-        marginTop: 20
+        marginTop: 20,
 
     },
     text: {
@@ -174,6 +174,7 @@ const styles = StyleSheet.create({
         marginLeft: 20,
     },
     text_2: {
+        fontSize: 18,
         fontWeight: 'bold',
         textAlign: 'center',    
         marginLeft: 20,
