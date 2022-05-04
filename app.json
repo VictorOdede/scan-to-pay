@@ -2,7 +2,7 @@
   "expo": {
     "name": "Lipa",
     "slug": "Lipa",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -22,7 +22,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.easylipa.lipa",
-      "buildNumber": "0.1.0"
+      "buildNumber": "0.1.1"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -33,7 +33,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "versionCode": 1
+      "versionCode": 2
     }
   }
 }

@@ -31,10 +31,6 @@ export default function Amount ({ navigation }) {
     const [phone, setPhone] = mpesaNumber;
     const [ID, setID] = scannedID;
     const [business] = businessName;
-    
-    
-
-
 
 
 
