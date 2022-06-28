@@ -6,7 +6,7 @@ import { DataContext } from './DataContext';
 
 export default function Success({navigation}) {
     const goHome = () => {
-        navigation.navigate("ScanQR")
+        navigation.navigate("Amount")
     }
 
     const {mpesaNumber} = useContext(DataContext);
