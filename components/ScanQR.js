@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React, { useState, useContext, useCallback } from 'react';
-import { StyleSheet, View, Vibration } from 'react-native';
+import { StyleSheet, View, Vibration, Button } from 'react-native';
 import BarcodeMask from 'react-native-barcode-mask';
 import {useNetInfo} from "@react-native-community/netinfo";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -24,15 +24,24 @@ function ScanQR({ navigation }) {
 
 const myKey = '@PHONE_NUMBER';
 
-const {mpesaNumber, scannedID, businessName } = useContext(DataContext);
+const {mpesaNumber, businessQR } = useContext(DataContext);
 
 const [phone, setPhone] = mpesaNumber;
-const [ID, setID] = scannedID;
-const [business, setBusiness] = businessName;
+const [businessURL, setBusiness] = businessQR;
 
   
 // State of the current scan
 const [scanned, setScanned] = useState(false);
+
+const [torchState, setTorch] = useState("off");
+
+const onSwitch = () => {
+  if (torchState == "off"){
+    setTorch("torch")} else{
+      setTorch("off")
+    }
+  
+}
 
 // Call hook for checking internet connection
 const netInfo = useNetInfo();
@@ -45,21 +54,22 @@ const isFocused = useIsFocused();
 const handleBarCodeScanned = async ({ data }) => {
 
   const myData = data.toString();
-  const business_name = myData.slice(40);
-  const business_id = myData.slice(3,39);
-  const validation_str = myData.slice(0,2);
+  
+  const validation_str = myData.slice(0,25);
 
 
 
-  if(validation_str !== "LP"){
+
+  if(validation_str !== "https://www.easylipa.xyz/"){
     navigation.navigate("FailedScan")
   } 
   else if(!netInfo.isConnected){
     navigation.navigate("NoInternet")
   } 
   else{
-  setID(business_id);
-  setBusiness(business_name);
+  // setID(business_id);
+  console.log(myData)
+  setBusiness(myData);
 
   const p = await readNumber(myKey);
   setPhone(p);
@@ -70,22 +80,24 @@ const handleBarCodeScanned = async ({ data }) => {
 };
 
 useFocusEffect(useCallback(()=>{setScanned(false)},
-[scanned]))
-
-
-
-    
+[scanned])) 
     
     return (
       <View style={styles.container} >
         {isFocused && 
         <Camera
+          flashMode={torchState}
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={styles.scanner}>
           <BarcodeMask edgeColor='#FFFFFF' lineAnimationDuration={3000} edgeRadius={15} edgeBorderWidth={8} edgeWidth={40} edgeHeight={40} 
             outerMaskOpacity={0.6}
           />
         </Camera> }
+        {/* <Button
+          onPress={onSwitch}
+          title="torch"
+        /> */}
+
         
   
       </View>

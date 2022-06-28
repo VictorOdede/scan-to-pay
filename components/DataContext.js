@@ -11,10 +11,10 @@ export const DataProvider = (props) => {
     //state for businessID
     const [ID, setID] = useState('');
     // state for businessName
-    const [business, setBusiness] = useState('')
+    const [businessURL, setBusiness] = useState('')
 
     return(
-       <DataContext.Provider value={{mpesaNumber: [phone, setPhone], scannedID: [ID, setID], businessName: [business, setBusiness]}}>
+       <DataContext.Provider value={{mpesaNumber: [phone, setPhone], scannedID: [ID, setID], businessQR: [businessURL, setBusiness]}}>
            {props.children}
        </DataContext.Provider> 
     );

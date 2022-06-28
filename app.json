@@ -2,7 +2,8 @@
   "expo": {
     "name": "Lipa",
     "slug": "Lipa",
-    "version": "0.1.1",
+    "owner": "lipa-app",
+    "version": "0.1.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -21,8 +22,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.easylipa.lipa",
-      "buildNumber": "0.1.1"
+      "bundleIdentifier": "com.slickvik99.lipa",
+      "buildNumber": "0.1.2"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -34,7 +35,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [ "CAMERA", "VIBRATE", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE", "READ_PHONE_STATE"  ],
-      "versionCode": 2
+      "versionCode": 3
     }
   }
 }

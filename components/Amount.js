@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DataContext } from './DataContext';
 import axios from 'axios'; 
+// import tokenRequest from './tokenRequest'
+import {useNetInfo} from "@react-native-community/netinfo";
 
 export default function Amount ({ navigation }) {
 
@@ -24,18 +26,18 @@ export default function Amount ({ navigation }) {
     // initiate new states
     const [amount, setAmount] = useState('');
 
-    const [checked, setChecked] = useState(false);
+    const netInfo = useNetInfo();
 
-    const {mpesaNumber, scannedID, businessName} = useContext(DataContext);
+    const {mpesaNumber, businessQR} = useContext(DataContext);
 
     const [phone, setPhone] = mpesaNumber;
-    const [ID, setID] = scannedID;
-    const [business] = businessName;
+    
+    const [businessURL, setBusiness] = businessQR;
 
 
 
 
-    // add phone number to local storage when pay button is clicked and 'remember me' is checked
+    // add phone number to local storage when pay button is clicked or 'remember me' is checked
     const storeNumber = async (value) => {
         try{
             await AsyncStorage.setItem('@PHONE_NUMBER', value)
@@ -59,22 +61,20 @@ export default function Amount ({ navigation }) {
     }
 
 
+
     //Read stored number when component mounts
     useEffect(async ()=>{
         try {
-           await readNumber(myKey); 
+           await readNumber(myKey);           
 
         } catch (err) {
             console.log(err)
         } 
     }, [])
-
-
-
+        
 
     
-
-    const url = "https://lipa-api-ro6xg.ondigitalocean.app/api/transaction"
+    
 
     
 
@@ -82,17 +82,27 @@ export default function Amount ({ navigation }) {
     const startPay = async(amt, myPhone) =>{
         const validPhone = "254" + myPhone.slice(1);
 
+        
+
         const paymentData = {
             amountSent: amt,
-            businessName: business,
-            businessID:ID,
+            // businessName: business,
+            // businessID:ID,
             sender: validPhone
         }
 
-        try{
-            const response = await axios.post(url, paymentData ); 
-            console.log(response.data);
+             
 
+        let options = {
+            method: 'POST',
+            url: businessURL,
+            // headers: {"authorization": "Bearer " + accessToken},
+            data: paymentData
+          } 
+
+        try{
+            const response = await axios.request(options); 
+            // console.log(response.data);
         } catch(error){
             console.log(error);
 
@@ -106,16 +116,22 @@ export default function Amount ({ navigation }) {
         onSubmit = {async (values) => {
             setAmount(values.sentAmount);
             setPhone(values.phoneNumber)
-            navigation.navigate('Success');
             await storeNumber(values.phoneNumber);
-            await startPay(values.sentAmount, values.phoneNumber);
+
+            if(!netInfo.isConnected){
+            navigation.navigate("NoInternet")
+            }else{
+                await startPay(values.sentAmount, values.phoneNumber);
+                navigation.navigate('Success');
+            }
+            
         }}
         >
             {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
             <View style={styles.container}>
                 <View style={{marginBottom: 20}}>
-                    <Text style={styles.text_2}>SEND TO {business}</Text>
-                    <Text style={styles.text}>ENTER YOUR M-PESA NUMBER</Text>
+                    {/* <Text style={styles.text_2}>SEND TO {business}</Text> */}
+                    <Text style={styles.text}>ENTER M-PESA NUMBER</Text>
                     <TextInput
                         style={styles.textInput}
                         keyboardType={'numeric'}

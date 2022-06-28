@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, View, Image, Text, Button} from 'react-native';
 import checkmark from '../assets/check-mark.png';
+import { DataContext } from './DataContext';
+
 
 export default function Success({navigation}) {
     const goHome = () => {
         navigation.navigate("ScanQR")
     }
+
+    const {mpesaNumber} = useContext(DataContext);
+
+    const [phone, setPhone] = mpesaNumber;
+
+
 
     return (
         <View style={styles.container}>
@@ -14,7 +22,7 @@ export default function Success({navigation}) {
             </View>
 
             <Text style={styles.text}>
-                A payment request has been sent to your phone. Please enter your M-Pesa PIN to complete the transaction.
+                A payment request has been sent to {phone}. Please enter M-Pesa PIN to complete the transaction.
             </Text>
 
             <View style={{marginLeft: 100, marginRight: 100, marginTop: 20}}>
