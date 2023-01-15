@@ -1,4 +1,4 @@
-# Lipa app - Scan QR Code to pay
+# Scan QR Code to pay
 This is a React Native android app that allows the user to scan a QR code to pay for goods/services using M-PESA.
 
 # Why?
