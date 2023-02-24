@@ -10,8 +10,8 @@ If you do not want to run the project locally, I have deployed this app on the G
 This app can also be ran locally by following these steps:
 
 - Clone the repository on to your local PC
-- Run npm install to set up the node modules
-- Run npm run dev to start the app
+- Run `npm install` to set up the node modules
+- Run `npx expo run:android` or `npx expo run:ios` to start the app
 - Connect to the same Wi-Fi newtwork as your PC and open the Expo app on your mobile phone. You will see the app running in Expo.
 
 # Approach
