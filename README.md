@@ -1,7 +1,20 @@
 # Scan QR Code to pay
 This is a React Native android app that allows the user to scan a QR code to pay for goods/services using M-PESA.
 
-# Why?
+Overview
+This a solution to the Pesapal developer challenge Problem #3. It is a boolean interpreter program that accepts a boolean expression as an input and solves the expression to output a boolean value. The program will solve any arbitrary length of expression and also supports variable declaration. The code is written using TypeScript and NextJS.
+
+Installation
+If you do not want to run the project locally, I have deployed this code as a serverless app and it can be accessed at https://boolean-interpreter.vercel.app
+
+This app can also be ran locally by following these steps:
+
+Clone the repository on to your local machine
+Run npm install to set up the node modules
+Run npm run dev to start the app
+Open localhost:3000 in your browser to use the interface
+
+# Approach
 Paying for goods/services directly using M-PESA SIM service is a long process involving the following steps: 
 1. Open SIM service app
 2. Click M-PESA
