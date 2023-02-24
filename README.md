@@ -1,18 +1,18 @@
 # Scan QR Code to pay
 This is a React Native android app that allows the user to scan a QR code to pay for goods/services using M-PESA.
 
-Overview
-This a solution to the Pesapal developer challenge Problem #3. It is a boolean interpreter program that accepts a boolean expression as an input and solves the expression to output a boolean value. The program will solve any arbitrary length of expression and also supports variable declaration. The code is written using TypeScript and NextJS.
+# Overview
+This app scans a merchant QR-Code embedded with the payment amount. Once the QR code is scanned, the transaction data is then sent to the server which returns a payment prompt to the user. The user then enters their PIN to complete the transaction. This app automates away all the repetitive steps making the checkout process faster.
 
-Installation
-If you do not want to run the project locally, I have deployed this code as a serverless app and it can be accessed at https://boolean-interpreter.vercel.app
+# Installation
+If you do not want to run the project locally, I have deployed this app on the Google Play store and it can be accessed publicly at https://play.google.com/store/apps/details?id=com.slickvik99.lipa
 
 This app can also be ran locally by following these steps:
 
-Clone the repository on to your local machine
-Run npm install to set up the node modules
-Run npm run dev to start the app
-Open localhost:3000 in your browser to use the interface
+- Clone the repository on to your local PC
+- Run npm install to set up the node modules
+- Run npm run dev to start the app
+- Connect to the same Wi-Fi newtwork as your PC and open the Expo app on your mobile phone. You will see the app running in Expo.
 
 # Approach
 Paying for goods/services directly using M-PESA SIM service is a long process involving the following steps: 
@@ -31,10 +31,6 @@ By automatically storing repeated information in a QR Code, we can reduce the nu
 3. Confirm transaction
 
 In order to send encoded QR data to the server, we need to use a client QR-scanner app.
-
-# How it works
-This app scans a merchant QR-Code containing their till number and amount. This data is then sent to the server which returns a payment prompt to the user.
-The user then enters their M-PESA PIN and confirms the transaction.
 
 # Languages
 * React Native(Expo)
