@@ -2,7 +2,7 @@
 This is a React Native android app that allows the user to scan a QR code to pay for goods/services using M-PESA.
 
 # Overview
-This app scans a merchant QR-Code embedded with the payment amount. Once the QR code is scanned, the transaction data is then sent to the server which returns a payment prompt to the user. The user then enters their PIN to complete the transaction. This app automates away all the repetitive steps making the checkout process faster.
+This app scans a merchant QR-Code embedded with the payment amount. Once the QR code is scanned, the transaction data is then sent to the server which returns a payment prompt to the customer. The customer then enters their PIN to complete the transaction. This app automates away all the repetitive steps making the checkout process up to 3x faster.
 
 # Installation
 If you do not want to run the project locally, I have deployed this app on the Google Play store and it can be accessed publicly at https://play.google.com/store/apps/details?id=com.slickvik99.lipa
